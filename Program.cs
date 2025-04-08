@@ -105,6 +105,7 @@ namespace Resource_Packer
 
             string zipPath = @outDir + "ResourcePack.pk3";
             ZipFile.CreateFromDirectory(inDir, zipPath, CompressionLevel.SmallestSize, false);
+            inFolder.Delete(true);
             Console.WriteLine("Done.");
         }
 
