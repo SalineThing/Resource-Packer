@@ -37,7 +37,10 @@ namespace Resource_Packer
             DirectoryInfo mapFolder = new DirectoryInfo(@tempDir);
 
             Console.WriteLine("Prepping Environment...");
-            outFolder.Delete(true);
+
+            if(outFolder.Exists)
+                outFolder.Delete(true);
+
             outFolder.Create();
 
             CopyFilesRecursively(startDir, inDir);
