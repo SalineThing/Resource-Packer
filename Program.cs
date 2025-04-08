@@ -24,6 +24,8 @@ namespace Resource_Packer
             }
         }
 
+        static List<string> GarbageFileTypes = new List<string>() {"backup", "dbs", "autosave", "bak"};
+
         static void Main(string[] args)
         {
             String startDir = "./../../mm8bdm-pk3/";
@@ -52,6 +54,19 @@ namespace Resource_Packer
 
             foreach (var f in mapFolder.EnumerateFiles())
             {
+                bool found = false;
+                foreach (string ext in GarbageFileTypes)
+                {
+                    if (f.Extension.Contains(ext))
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found)
+                    continue; // This is a junk file that we want to avoid processing here
+
                 var pd = findPatchDir(new DirectoryInfo(inDir + "patches/maps/"), removeFileExtension(f.Name));
                 var tf = new FileInfo(inDir + "TEXTURES.MAPS." + removeFileExtension(f.Name));
 
