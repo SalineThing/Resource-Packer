@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Reference Include="WADParser">
-      <HintPath>..\SectinfoGenerator\SectinfoGenerator\Dependencies\WADParser.dll</HintPath>
+      <HintPath>..\Dependencies\WADParser.dll</HintPath>
     </Reference>
   </ItemGroup>
 
